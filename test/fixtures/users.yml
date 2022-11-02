@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  pass: MyString
+  icon: 
+  money: 1
+  debt: 1
+  visits: 1
+  final_date: 2022-11-02
+
+two:
+  name: MyString
+  pass: MyString
+  icon: 
+  money: 1
+  debt: 1
+  visits: 1
+  final_date: 2022-11-02
