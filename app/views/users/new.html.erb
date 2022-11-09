@@ -1,10 +1,11 @@
-<%= form_for @users , url: {action: :create} do |f| %>
-<%= f.label :name, 'ユーザーID' %>
-<%= f.text_field :name %>
-
-
-<%= f.label :pass, 'パスワード' %>
-<%= f.text_field :pass %>
-
+<%= form_for @user , url: {action: :create} do |f| %>
+    <p>
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name %>
+    </p>
+    <p>
+        <%= f.label :pass, 'パスワード' %>
+        <%= f.password_field :pass %>
+    </p>
 <%= f.submit '登録' %>
 <% end %>

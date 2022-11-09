@@ -1,0 +1,14 @@
+<h2>ログインページ</h2>
+<%= form_tag '/top/login', method: :post do %>
+    <p>
+        <%= label_tag :name, '名前' %>
+        <%= text_field_tag :name %>
+    </p>
+    <p>
+        <%= label_tag :pass, 'パスワード' %>
+        <%= password_field_tag :pass %>
+    </p>
+    <%= submit_tag 'ログイン' %>
+<% end %>
+
+<p><%= link_to '新規登録はこちら', "/users/new" %></p>

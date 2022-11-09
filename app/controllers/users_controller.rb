@@ -4,17 +4,12 @@ class UsersController < ApplicationController
     end
     
     def new
-        @users = User.new 
+        @user = User.new 
     end
     
     def create
-        
-        @users =  User.new(name: params[:user][:name], pass: BCrypt::Password.create(params[:user][:pass]))
-        #@users = User.new(uid: params[:user][:uid], password: params[:user][:password], password_confirmation:params[:user][:password_confirmation])
-        
-        
-        #@users = User.new(uid: params[:user][:uid], pass: params[:user][:pass])
-        if @users.save
+        @user =  User.new(name: params[:user][:name], pass: BCrypt::Password.create(params[:user][:pass]))
+        if @user.save
             redirect_to '/'
         else
             #render 'new'
