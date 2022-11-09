@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Casino</title>
+    <link rel="stylesheet" href="style.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    
+    <header>
+        <h1 class="title">カジノ</h1>
+        <nav class="nav">
+            <ul class="menu-group">
+                <li class="menu-item"><%= link_to "トップページ", "/" %></li>
+                <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
+                <li class="menu-item"><%= link_to "sign in/sign up", "/" %></li>
+            </ul>
+        </nav>
+    </header>
+    <p>ランキング表示</p>
+    
   </body>
 </html>
