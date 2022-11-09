@@ -1,4 +1,24 @@
-<html lang="ja">
+<h1>Top#index</h1>
+メインページ
+
+<h2>ログインしてください</h2>
+<%= form_tag '/top/login', method: :post do %>
+    <%= label_tag :uid, 'ユーザーID' %>
+    <%= text_field_tag :uid %>
+    <%= label_tag :pass, 'パスワード' %>
+    <%= password_field_tag :pass %>
+    <%= submit_tag 'ログイン' %>
+<% end %>
+<p><%= link_to "ユーザー一覧","/top/index" %></p>
+<p><%= link_to 'アカウント作成', "/users/new" %></p>
+
+
+
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
   <title>Header Sample</title>
