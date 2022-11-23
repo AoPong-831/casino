@@ -19,7 +19,11 @@
           <ul class="menu-group">
               <li class="menu-item"><%= link_to "トップページ", "/" %></li>
               <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
-              <li class="menu-item"><%= link_to "sign in/sign up", "/top/login_page" %></li>
+              <% if session[:login_uid] %>
+                <li class="menu-item"><%= link_to "ログアウト",top_logout_path %></li>
+              <% else %> 
+                <li class="menu-item"><%= link_to "sign in/sign up", "/top/login_page" %></li>
+              <% end %>
           </ul>
       </nav>
     </header>
