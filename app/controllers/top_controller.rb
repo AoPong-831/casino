@@ -15,6 +15,9 @@ class TopController < ApplicationController
   def login
     user = User.find_by(name: params[:name])
     if user && BCrypt::Password.new(user.pass) == params[:pass]
+      require 'date'
+      day = Date.today
+      User.where(name: params[:name]).update(final_date: day)
       session[:login_uid] = params[:name]
       redirect_to root_path
     else
