@@ -10,7 +10,7 @@
     </tr>
 <% @users.each do |a| %>
         <tr>
-            <th><%= a.name %></th>
+            <th><%= link_to a.name,"users/index/#{a.id}" %></th>
             <th><%= a.pass %></th>
             <th><%= a.money %></th>
             <th><%= a.debt %></th>

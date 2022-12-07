@@ -1,15 +1,9 @@
-<% @users.each do |a| %>
-    <p>
-        
-        [ユーザID]
-        <%= a.uid %>
-        [パスワード]
-        <%= a.pass %>
-        
-        <%= link_to '削除', "/users/#{a.id}", method: :delete %>
-        
-        
-        
-    </p>
-<% end %>
-<p><%= link_to 'アカウント作成', "/users/new" %></p>
+<h1><%= @user.name %> のページ</h1>
+<table border = "1">
+    <tr><th>名前</th><td><%= @user.name %></td></tr>
+    <tr><th>総資産</th><td><%= @user.money %></td></tr>
+    <tr><th>借金</th><td><%= @user.debt %></td></tr>
+    <tr><th>来店回数</th><td><%= @user.visits %></td></tr>
+    <tr><th>最終更新日</th><td><%= @user.final_date %></td></tr>
+    
+</table>
