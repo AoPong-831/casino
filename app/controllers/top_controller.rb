@@ -1,7 +1,7 @@
 class TopController < ApplicationController
   def index
-    #@users = User.all.order(money: "DESC")
-    @users = User.all
+    @users = User.all.order(money: "DESC")
+    #@users = User.all
     #if current_user
       #render "main"
     #else
