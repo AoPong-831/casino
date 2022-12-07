@@ -1,5 +1,6 @@
 class TopController < ApplicationController
   def index
+    #@users = User.all.order(money: "DESC")
     @users = User.all
     #if current_user
       #render "main"
@@ -17,7 +18,10 @@ class TopController < ApplicationController
     if user && BCrypt::Password.new(user.pass) == params[:pass]
       require 'date'
       day = Date.today
-      User.where(name: params[:name]).update(final_date: day)
+      user.update(final_date: day)
+      #User.where(name: params[:name]).update(final_date: day)
+      #User.where(name: "takaaki").update(name: "day")
+      
       session[:login_uid] = params[:name]
       redirect_to root_path
     else
