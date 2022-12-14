@@ -5,5 +5,9 @@
     <tr><th>借金</th><td><%= @user.debt %></td></tr>
     <tr><th>来店回数</th><td><%= @user.visits %></td></tr>
     <tr><th>最終更新日</th><td><%= @user.final_date %></td></tr>
-    
 </table>
+<br>
+
+<th><%= link_to "引出","/users/withdraw/#{@user.id}" %></th>
+<th><%= link_to "預入","/users/deposit/#{@user.id}" %></th>
+<th><%= link_to "はじめてのア〇ム","/" %></th>
