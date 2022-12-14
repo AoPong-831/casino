@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def index
-        @users = User.all
+        @user = User.find(params[:id])
     end
     
     def new
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
         @users = User.find(params[:id])
     end
   
- 
-    
+    def withdraw
+        
+    end
 end

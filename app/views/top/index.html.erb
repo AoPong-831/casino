@@ -12,7 +12,7 @@
 <% @users.each do |a| %>
         <tr>
             <th><%= i %></th>
-            <th><%= a.name %></th>
+            <th><%= link_to a.name,"users/index/#{a.id}" %></th>
             <th><%= a.money %></th>
             <th><%= a.debt %></th>
             <th><%= a.visits %></th>
