@@ -1,8 +1,9 @@
 <p>ランキング表示</p>
+<% i = 1 %>
 <table border = "1">
     <tr>
+        <th>順位</th>
         <th>ユーザー名</th>
-        <th>パスワード</th>
         <th>総資産</th>
         <th>借金</th>
         <th>来店回数</th>
@@ -10,12 +11,13 @@
     </tr>
 <% @users.each do |a| %>
         <tr>
+            <th><%= i %></th>
             <th><%= a.name %></th>
-            <th><%= a.pass %></th>
             <th><%= a.money %></th>
             <th><%= a.debt %></th>
             <th><%= a.visits %></th>
             <th><%= a.final_date %></th>
         </tr>
+        <% i += 1 %>
 <% end %>
 </table>
