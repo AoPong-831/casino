@@ -19,7 +19,7 @@
       <nav class="nav">
           <ul class="menu-group">
               <% if session[:login_uid] == "takaaki"%>
-                    <li class="menu-item"><%= link_to "受信BOX", "/" %></li>
+                    <li class="menu-item"><%= link_to "受信BOX", "/receptions/index" %></li>
               <% end %>
               <li class="menu-item"><%= link_to "トップページ", "/" %></li>
               <li class="menu-item"><%= link_to "カレンダー", "/" %></li>

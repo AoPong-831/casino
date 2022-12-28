@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'receptions/index'
   resources :users
   root 'top#index'
   get "top/login_page"
