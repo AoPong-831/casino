@@ -22,6 +22,7 @@ class UsersController < ApplicationController
             #redirect_to '/'
         end
     end
+    
     def destroy
         b = User.find(params[:id])
         b.destroy
@@ -33,6 +34,25 @@ class UsersController < ApplicationController
     end
   
     def withdraw
-        
+        @user = User.find(params[:id])
+    end
+    
+    def deposit
+        @user = User.find(params[:id])
+    end
+    
+    def edit#withdraw, depositで更新するとここに来るはず
+        @user = User.find(params[:id])
+    end
+    
+    def update
+       @user = User.find(params[:id])
+#       if flag== "a" then
+#           changed_money = 9999
+#       else
+           changed_money = @user.money + params[:user][:money].to_i
+#       end
+       @user.update(money: changed_money)
+       redirect_to "/"
     end
 end

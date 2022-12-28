@@ -1,1 +1,11 @@
-預入
+<h1>預け入れ</h1>
+<h3>所持金 : <%= @user.money %></h3>
+
+<%= form_for(@user) do |f| %>
+    <p>
+    <%= f.label :money, "金額入力" %><br>
+    <%= f.text_field :money %>
+    </p>
+    <br>
+    <%= f.submit "申請" %>
+<% end %>
