@@ -47,12 +47,14 @@ class UsersController < ApplicationController
     
     def update
        @user = User.find(params[:id])
-#       if flag== "a" then
-#           changed_money = 9999
-#       else
-           changed_money = @user.money + params[:user][:money].to_i
-#       end
-       @user.update(money: changed_money)
-       redirect_to "/"
+        if params[:type] == "withdraw" then#ATM取引、預入、引出を判断
+            changed_money = @user.money - params[:user][:money].to_i
+        elsif params[:type] == "deposit" then
+            changed_money = @user.money + params[:user][:money].to_i
+        else#エラー対応
+            changed_money = 99999
+        end
+        @user.update(money: changed_money)
+        redirect_to "/", notice: "取引を完了しました"
     end
 end
