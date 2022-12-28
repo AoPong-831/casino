@@ -1,1 +1,12 @@
-引き出し
+<h1>引き出し</h1>
+<h3>所持金 : <%= @user.money %></h3>
+
+<%= form_with model: @user do |f| %>
+    <p>
+    <%= f.label :money, "金額入力" %><br>
+    <%= f.text_field :money %>
+    </p>
+    <br>
+    <%= hidden_field_tag :type, "withdraw" %>
+    <%= f.submit "申請" %>
+<% end %>

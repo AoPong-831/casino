@@ -22,6 +22,7 @@ class UsersController < ApplicationController
             #redirect_to '/'
         end
     end
+    
     def destroy
         b = User.find(params[:id])
         b.destroy
@@ -33,6 +34,27 @@ class UsersController < ApplicationController
     end
   
     def withdraw
-        
+        @user = User.find(params[:id])
+    end
+    
+    def deposit
+        @user = User.find(params[:id])
+    end
+    
+    def edit#withdraw, depositで更新するとここに来るはず
+        @user = User.find(params[:id])
+    end
+    
+    def update
+       @user = User.find(params[:id])
+        if params[:type] == "withdraw" then#ATM取引、預入、引出を判断
+            changed_money = @user.money - params[:user][:money].to_i
+        elsif params[:type] == "deposit" then
+            changed_money = @user.money + params[:user][:money].to_i
+        else#エラー対応
+            changed_money = 99999
+        end
+        @user.update(money: changed_money)
+        redirect_to "/", notice: "取引を完了しました"
     end
 end
