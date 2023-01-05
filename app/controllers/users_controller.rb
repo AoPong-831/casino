@@ -55,6 +55,7 @@ class UsersController < ApplicationController
             changed_money = 99999
         end
         @user.update(money: changed_money)
-        redirect_to "/", notice: "取引を完了しました"
+        flash[:notice] = "取引を完了しました"
+        redirect_to "/"
     end
 end
