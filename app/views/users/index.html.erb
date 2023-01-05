@@ -7,8 +7,9 @@
     <tr><th>最終更新日</th><td><%= @user.final_date %></td></tr>
 </table>
 <br>
-
-<th><%= link_to "引出","/users/withdraw/#{@user.id}" %></th>
-<th><%= link_to "預入","/users/deposit/#{@user.id}" %></th>
-<th><%= link_to "はじめてのア〇ム","/" %></th>
-<%= link_to '削除', "/users/#{@user.id}", method: :delete %>
+<% if (session[:login_uid] == @user.name) or (session[:login_uid] == "takaaki") %>
+    <th><%= link_to "引出","/users/withdraw/#{@user.id}" %></th>
+    <th><%= link_to "預入","/users/deposit/#{@user.id}" %></th>
+    <th><%= link_to "はじめてのア〇ム","/" %></th>
+    <%= link_to '削除', "/users/#{@user.id}", method: :delete %>
+<% end %>
