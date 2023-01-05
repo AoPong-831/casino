@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_11_02_082322) do
   create_table "receptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "money"
-    t.integer "type"
+    t.integer "flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

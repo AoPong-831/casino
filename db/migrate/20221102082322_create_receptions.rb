@@ -3,7 +3,7 @@ class CreateReceptions < ActiveRecord::Migration[5.2]
     create_table :receptions do |t|
       t.integer :user_id
       t.integer :money
-      t.integer :type
+      t.integer :flag
 
       t.timestamps
     end

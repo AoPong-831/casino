@@ -48,13 +48,13 @@ class UsersController < ApplicationController
     def update
        @user = User.find(params[:id])
         if params[:type] == "withdraw" then#ATM取引、預入、引出を判断
-            changed_money = @user.money - params[:user][:money].to_i
+            #changed_money = @user.money - params[:user][:money].to_i
+            Reception.create(user_id: @user.id, money: params[:user][:money], flag: 1)
         elsif params[:type] == "deposit" then
-            changed_money = @user.money + params[:user][:money].to_i
+            Reception.create(user_id: @user.id, money: params[:user][:money], flag: 2)
         else#エラー対応
-            changed_money = 99999
+            
         end
-        @user.update(money: changed_money)
-        redirect_to "/", notice: "取引を完了しました"
+        redirect_to "/", notice: "取引を申請中です。"
     end
 end
