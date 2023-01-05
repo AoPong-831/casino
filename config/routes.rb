@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'receptions/index'
   resources :users
+  resources :receptions
   root 'top#index'
   get "top/login_page"
   post "top/login"
@@ -9,5 +10,8 @@ Rails.application.routes.draw do
   get "users/index/:id", to: "users#index"
   get "users/withdraw/:id", to: "users#withdraw"
   get "users/deposit/:id", to: "users#deposit"
+  
+  #get "receptions/:id", to: "receptions#show"
+  #delete "receptions/:id" ,to: "receptions#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

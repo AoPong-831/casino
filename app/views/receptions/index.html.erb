@@ -1,1 +1,31 @@
-受信
+<p>受信画面</p>
+<table border = "1">
+    <tr>
+        <th>user_id</th>
+        <th>money</th>
+        <th>flag</th>
+        <th>承認ボタン</th>
+        <th>削除ボタン</th>
+    </tr>
+<% @receptions.each do |a| %>
+        <tr>
+            <% begin %>
+                <% b = User.find_by(id: a.user_id) %>
+                <th><%= b.name %></th>
+            <% rescue %>
+                <th><%= "削除されたアカウント" %></th>
+            <% end %>
+            
+            <th><%= a.money %></th>
+            <% if a.flag == 1 %>
+                <th><%= "引出" %></th>
+            <% elsif a.flag == 2 %>
+                <th><%= "預入" %></th>
+            <% else %>
+                <th><%= "error" %></th>
+            <% end %>
+            <th><%= link_to "承認","/receptions/#{a.id}" %></th>
+            <th><%= link_to "削除","/receptions/#{a.id}", method: :delete %></th>
+        </tr>
+<% end %>
+</table>

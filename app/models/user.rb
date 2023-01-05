@@ -8,4 +8,6 @@ class User < ApplicationRecord
         end
         @password = val
     end
+    
+    has_many :receptions
 end
