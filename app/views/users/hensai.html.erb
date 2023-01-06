@@ -1,0 +1,13 @@
+<%= flash[:notice] %>
+<h1>返済ページ</h1>
+<h3>所持金 : <%= @user.money %></h3>
+融資$1000　利息$500
+<%= form_with model: @user do |f| %>
+    <p>
+    <%= f.label :kaisuu, "希望返済回数" %><br>
+    <%= f.text_field :kaisuu %>
+    </p>
+    <br>
+    <%= hidden_field_tag :flag, "hensai" %>
+    <%= f.submit "申請" %>
+<% end %>

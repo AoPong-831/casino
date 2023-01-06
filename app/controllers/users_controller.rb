@@ -41,6 +41,18 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
     
+    def debt
+        @user = User.find(params[:id])
+    end
+    
+    def hensai
+        @user = User.find(params[:id])
+    end
+    
+    def yuushi
+        @user = User.find(params[:id])
+    end
+    
     def edit#withdraw, depositで更新するとここに来るはず
         @user = User.find(params[:id])
     end
@@ -48,26 +60,79 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         message = "初期エラー発生が発生しましたs"#デフォルトメッセージ
-        if params[:type] == "withdraw" then#ATM取引、預入、引出を判断
+        if params[:flag] == "withdraw" then#ATM取引、預入、引出を判断
             if 0 > (@user.money - params[:user][:money].to_i) then#引き出し額が持ち金より多い場合
                 message = "引き出し額が所持金を超えています"
+                flash[:notice] = message
+                redirect_back(fallback_location: "users/withdraw")
+                
             elsif params[:user][:money].to_i <= 0 then#入力額が0以下の場合
                 message = "入力額が不正です"
+                flash[:notice] = message
+                redirect_back(fallback_location: "users/withdraw")
+                
             else
                 Reception.create(user_id: @user.id, money: params[:user][:money], flag: 1)
                 message = "取引を申請中です"
+                flash[:notice] = message
+                redirect_to "/"
             end
-        elsif params[:type] == "deposit" then
+        elsif params[:flag] == "deposit" then
             if params[:user][:money].to_i <= 0 then#入力額が0以下の場合
                 message = "入力額が不正です"
+                flash[:notice] = message
+                redirect_back(fallback_location: "users/deposit")
+                
             else
                 Reception.create(user_id: @user.id, money: params[:user][:money], flag: 2)
                 message = "取引を申請中です"
+                flash[:notice] = message
+                redirect_to "/"
             end
+        elsif params[:flag] == "yuushi" then
+            @user.update(money: @user.money + 1000, debt: @user.debt + 1)
+            message = "融資が完了しました"
+            flash[:notice] = message
+            redirect_to "/"
+            
+        elsif params[:flag] == "hensai" then
+            if 0 == @user.debt
+                message = "そもそも借金はしていません"
+                flash[:notice] = message
+                redirect_to "/"
+                
+            elsif 0 > (@user.money - params[:user][:kaisuu].to_i * 1500) then#引き出し額が持ち金より多い場合
+                message = "返済額が所持金を超えています"
+                flash[:notice] = message
+                redirect_back(fallback_location: "users/hensai")
+                
+            elsif params[:user][:kaisuu].to_i <= 0 then#入力額が0以下の場合
+                message = "入力値が不正です"
+                flash[:notice] = message
+                redirect_back(fallback_location: "users/hensai")
+                
+            elsif 0 > (@user.debt - params[:user][:kaisuu].to_i)
+                @user.update(money: @user.money - 1500 * @user.debt, debt: 0)
+                message = "入力値が借金回数より多かったですが返済は正常に完了しました"
+                flash[:notice] = message
+                redirect_to "/"
+                
+            else
+                @user.update(money: @user.money - 1500 * params[:user][:kaisuu].to_i, debt: @user.debt - params[:user][:kaisuu].to_i)
+                message = "返済が完了しました"
+                flash[:notice] = message
+                redirect_to "/"
+            end
+            #@user.money += 1000
+            #@user.debt += 1
+            
+            #@user.save
         else#エラー対応
             message = "取引中にエラーが発生しました"
+            flash[:notice] = message
+            redirect_to "/"
         end
-        flash[:notice] = message
-        redirect_to "/"
+        #flash[:notice] = message
+        #redirect_to "/"
     end
 end

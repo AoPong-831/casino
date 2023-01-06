@@ -1,3 +1,4 @@
+<%= flash[:notice] %>
 <h1>引き出し</h1>
 <h3>所持金 : <%= @user.money %></h3>
 
@@ -7,6 +8,6 @@
     <%= f.text_field :money %>
     </p>
     <br>
-    <%= hidden_field_tag :type, "withdraw" %>
+    <%= hidden_field_tag :flag, "withdraw" %>
     <%= f.submit "申請" %>
 <% end %>

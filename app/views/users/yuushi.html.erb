@@ -1,0 +1,7 @@
+<h1>融資ページ</h1>
+<h3>所持金 : <%= @user.money %></h3>
+融資$1000　利息$500
+<%= form_with model: @user do |f| %>
+    <%= hidden_field_tag :flag, "yuushi" %>
+    <%= f.submit "申請" %>
+<% end %>
