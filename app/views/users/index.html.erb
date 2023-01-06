@@ -11,5 +11,7 @@
     <th><%= link_to "引出","/users/withdraw/#{@user.id}" %></th>
     <th><%= link_to "預入","/users/deposit/#{@user.id}" %></th>
     <th><%= link_to "借金","/users/debt/#{@user.id}" %></th>
-    <%= link_to '削除', "/users/#{@user.id}", method: :delete %>
+    <br>
+    <br>
+    <th><%= link_to "アカウント削除","/users/confirm/#{@user.id}" %></th>
 <% end %>

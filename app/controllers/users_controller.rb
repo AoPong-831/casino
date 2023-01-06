@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     def destroy
         b = User.find(params[:id])
         b.destroy
+        session.delete(:login_uid)
         redirect_to root_path
     end
   
@@ -50,6 +51,10 @@ class UsersController < ApplicationController
     end
     
     def yuushi
+        @user = User.find(params[:id])
+    end
+    
+    def confirm
         @user = User.find(params[:id])
     end
     
