@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get "users/withdraw/:id", to: "users#withdraw"
   get "users/deposit/:id", to: "users#deposit"
   
-  #get "receptions/:id", to: "receptions#show"
-  #delete "receptions/:id" ,to: "receptions#destroy"
+  get "receptions/index", to: "receptions#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

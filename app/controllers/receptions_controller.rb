@@ -23,6 +23,6 @@ class ReceptionsController < ApplicationController
     reception = Reception.find(params[:id])
     reception.destroy
     
-    redirect_to "reception/index"
+    redirect_back(fallback_location: "receptions/index")
   end
 end
