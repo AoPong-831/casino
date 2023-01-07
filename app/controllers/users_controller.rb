@@ -25,8 +25,14 @@ class UsersController < ApplicationController
     
     def destroy
         b = User.find(params[:id])
-        b.destroy
-        session.delete(:login_uid)
+        if session[:login_uid] == admin then
+            b.destroy
+            
+        else
+            b.destroy
+            session.delete(:login_uid)
+        end
+        
         redirect_to root_path
     end
   
