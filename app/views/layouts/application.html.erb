@@ -22,10 +22,18 @@
                     <li class="menu-item"><%= link_to "受信BOX", "/receptions/index" %></li>
               <% end %>
               <li class="menu-item"><%= link_to "トップページ", "/" %></li>
-              <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
               <% if session[:login_uid] %>
+                <% if session[:login_uid] == admin %>
+                <li class="menu-item"><%= link_to header_user(session[:login_uid]).name+"(管理者)のアカウント情報","users/index/#{header_user(session[:login_uid]).id}" %></li>
+                <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
                 <li class="menu-item"><%= link_to "ログアウト",top_logout_path %></li>
+                <% else %>
+                <li class="menu-item"><%= link_to header_user(session[:login_uid]).name+"様のアカウント情報","users/index/#{header_user(session[:login_uid]).id}" %></li>
+                <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
+                <li class="menu-item"><%= link_to "ログアウト",top_logout_path %></li>
+                <% end %>
               <% else %> 
+              　<li class="menu-item"><%= link_to "カレンダー", "/" %></li>
                 <li class="menu-item"><%= link_to "sign in/sign up", "/top/login_page" %></li>
               <% end %>
           </ul>

@@ -1,12 +1,11 @@
 <%= flash[:notice] %>
 <% @users.each do |b| %>
     <% if session[:login_uid] == b.name %>
-        <% if session[:login_uid] == "takaaki" %>
+        <% if session[:login_uid] == admin %>
             <h1><%= b.name %>(管理者)ログイン中</h1>
             <%= link_to b.name+"（管理者）のページ","users/index/#{b.id}" %>
         <% else %>
         <h1><%= b.name %>様ログイン中</h1>
-        <%= link_to b.name+"様の詳細","users/index/#{b.id}" %>
         <% end %>
     <% end %>
 <% end %>
