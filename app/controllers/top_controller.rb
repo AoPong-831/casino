@@ -47,4 +47,5 @@ class TopController < ApplicationController
   def error
     
   end
+  
 end

@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
         end
         helper_method :admin
         
-        def header_user(a)#headerにログイン時のアカウント情報を載せるため
-            user_t = User.find_by(name: a)
+        def header_user#headerにログイン時のアカウント情報を載せるため
+            user_t = User.find_by(name: session[:login_uid])
             return user_t
         end
         helper_method :header_user

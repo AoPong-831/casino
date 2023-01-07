@@ -146,4 +146,5 @@ class UsersController < ApplicationController
         #flash[:notice] = message
         #redirect_to "/"
     end
+    
 end

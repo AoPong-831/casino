@@ -25,4 +25,5 @@ class ReceptionsController < ApplicationController
     
     redirect_back(fallback_location: "receptions/index")
   end
+  
 end
