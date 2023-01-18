@@ -13,3 +13,23 @@
     <th><%= link_to "はじめてのア〇ム","/" %></th>
     <%= link_to '削除', "/users/#{@user.id}", method: :delete %>
 <% end %>
+
+<h3>Log</h3>
+<% passbook = File.open("passbooks/" + @user.name + ".txt","r") %>
+<% data = passbook.read.split(":") %>
+<%= p data%>
+
+<table border = "1">
+    <tr>
+        <th>日付</th>
+        <th>総資産</th>
+    </tr>
+<% data.each do |a| %>
+        <tr>
+            <th><%= a[0] %></th>
+            <th><%= a[1] %></th>
+        </tr>
+<% end %>
+</table>
+
+<% passbook.close %>
