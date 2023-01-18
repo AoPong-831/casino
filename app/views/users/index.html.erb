@@ -15,22 +15,3 @@
     <br>
     <th><%= link_to "アカウント削除","/users/confirm/#{@user.id}" %></th>
 <% end %>
-
-<h3>口座履歴</h3>
-<% passbook = File.open("passbooks/" + @user.name + ".txt","r") %>
-
-<% data = passbook.read.split("\n") %>
-<table border = "1">
-    <tr>
-        <th>日付</th>
-        <th>総資産</th>
-    </tr>
-    <% data.each do |t| %>
-        <tr>
-    <% a,b = t.to_s.split(":") %>
-            <th><%= a %></th>
-            <th><%= b %></th>
-        </tr>
-<% end %>
-</table>
-<% passbook.close %>
