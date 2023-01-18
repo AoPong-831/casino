@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     
     def destroy
         b = User.find(params[:id])
+        File.delete("passbooks/" + b.name + ".txt")
         if session[:login_uid] == admin then
             b.destroy
             
