@@ -27,7 +27,6 @@
                 <li class="menu-item"><%= link_to "ログアウト",top_logout_path %></li>
                 <% else %>
                 <li class="menu-item"><%= link_to header_user.name+"様のアカウント情報","/users/index/#{header_user.id}" %></li>
-                <li class="menu-item"><%= link_to "カレンダー", "/" %></li>
                 <li class="menu-item"><%= link_to "ログアウト",top_logout_path %></li>
                 <% end %>
               <% else %> 
