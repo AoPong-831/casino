@@ -16,3 +16,9 @@ header {
   display: inline-block;
   padding: 10px;
 }
+
+body {
+  background-image: url("background.jpg");
+  height: 800px;
+  background-size:cover;
+}

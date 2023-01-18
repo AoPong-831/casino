@@ -12,6 +12,10 @@ class UsersController < ApplicationController
         day = Date.today
         #@user =  User.new(name: params[:user][:name], pass: BCrypt::Password.create(params[:user][:pass]), money: 1000, debt: 0, visits: 1, final_date: day)
         @user =  User.new(name: params[:user][:name], password: params[:user][:password], password_confirmation:params[:user][:password_confirmation], money: 1000, debt: 0, visits: 1, final_date: day)
+        #通帳(passbook)作成
+        passbook = File.new("passbooks/" + @user.name.to_s + ".txt","w")
+        passbook.write(day.to_s + ":" + @user.money.to_s)
+        passbook.close
         #@users = User.new(uid: params[:user][:uid], password: params[:user][:password], password_confirmation:params[:user][:password_confirmation])
         if @user.save
             #flash[:notice] = ''
