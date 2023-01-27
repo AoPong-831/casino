@@ -25,7 +25,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: test_render_7k7o
-  username: test_render_7k7o_user
+  database: test_render_udyd
+  username: test_render_udyd_user
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
